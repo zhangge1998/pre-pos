@@ -1,5 +1,12 @@
 'use strict';
-
+function createUpdatedCollection(collectionA, objectB) {
+  var result = getCountSameElements(collectionA);
+  for (var i = 0; i < result.length; i++) {
+    if (isExit(result[i], objectB))
+      isLargeThanThree(result[i]);
+  }
+  return result;
+}
 function getCountSameElements(collectionA) {
   var arr_result = [];
   var i = 0;
@@ -16,14 +23,7 @@ function getCountSameElements(collectionA) {
   }
   return arr_result;
 }
-function createUpdatedCollection(collectionA, objectB) {
-  var result = getCountSameElements(collectionA);
-  for (var i = 0; i < result.length; i++) {
-    if (isExit(result[i], objectB))
-      isLargeThanThree(result[i]);
-  }
-  return result;
-}
+
 function isExit(a, objectB) {
   for (var j = 0; j < objectB.value.length; j++)
     if (a.key == objectB.value[j])
