@@ -13,6 +13,10 @@ function getCountSameElements(collectionA) {
   while (i < collectionA.length) {
     var count = 0;
     var temp = collectionA[i];
+    if (temp.length > 1) {
+      arr_result.push({key: temp.substring(0, 1), count: parseInt(temp.substring(2, 3))});
+      break;
+    }
     for (var j = i; j < collectionA.length; j++) {
       if (collectionA[j] == temp) {
         count += 1;
