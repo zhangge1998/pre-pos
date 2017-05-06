@@ -9,7 +9,7 @@ function countSameElements(collection) {
       else {
         t = t + 1;
         elementCounts[t] = {key: collection[j], count: 1};
-      }
+           }
     else
       elementCounts.push({key: collection[j].substring(0, 1), count: parseInt(collection[j].substring(2, 3))});
   return elementCounts;
