@@ -8,6 +8,7 @@ function collectSameElements(collectionA, collectionB) {
   }
   return a;
 }
+
 function isExitSameElement(a, b) {
   for (var j = 0; j < b.length; j++)
     if (a == b[j])
