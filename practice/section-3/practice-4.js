@@ -7,25 +7,21 @@ function createUpdatedCollection(collectionA, objectB) {
   }
   return result;
 }
+
 function getCountSameElements(collectionA) {
-  var arr_result = [];
-  var i = 0;
-  while (i < collectionA.length) {
-    var count = 0;
-    var temp = collectionA[i];
-    if (temp.length > 1) {
-      arr_result.push({key: temp.substring(0, 1), count: parseInt(temp.substring(2, 3))});
-      break;
-    }
-    for (var j = i; j < collectionA.length; j++) {
-      if (collectionA[j] == temp) {
-        count += 1;
-        i = j + 1;
+  var elementCounts = [{key: 'a', count: 0}];
+  var t = 0;
+  for (var j = 0; j < collectionA.length; j++)
+    if (collectionA[j].length == 1)
+      if (elementCounts[t].key == collectionA[j])
+        elementCounts[t].count += 1;
+      else {
+        t = t + 1;
+        elementCounts[t] = {key: collectionA[j], count: 1};
       }
-    }
-    arr_result.push({key: temp, count: count});
-  }
-  return arr_result;
+    else
+      elementCounts.push({key: collectionA[j].substring(0, 1), count: parseInt(collectionA[j].substring(2, 3))});
+  return elementCounts;
 }
 
 function isExit(a, objectB) {
@@ -33,6 +29,7 @@ function isExit(a, objectB) {
     if (a.key == objectB.value[j])
       return 1;
 }
+
 function isLargeThanThree(a) {
   if (a.count >= 3)
     a.count -= parseInt(a.count / 3);

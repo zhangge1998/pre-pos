@@ -7,21 +7,19 @@ function createUpdatedCollection(collectionA, objectB) {
   }
   return result;
 }
+
 function getCountSameElements(collectionA) {
-  var arr_result = [];
-  var i = 0;
-  while (i < collectionA.length) {
-    var count = 0;
-    var temp = collectionA[i];
-    for (var j = i; j < collectionA.length; j++) {
-      if (collectionA[j] == temp) {
-        count += 1;
-        i = j + 1;
-      }
+  var elementCounts = [{key: 'a', count: 0}];
+  var t = 0;
+  for (var i = 0; i < collectionA.length; i++) {
+    if (elementCounts[t].key == collectionA[i])
+      elementCounts[t].count += 1;
+    else {
+      t = t + 1;
+      elementCounts[t] = {key: collectionA[i], count: 1};
     }
-    arr_result.push({key: temp, count: count});
   }
-  return arr_result;
+  return elementCounts;
 }
 
 function isExit(a, objectB) {

@@ -7,6 +7,7 @@ function createUpdatedCollection(collectionA, objectB) {
   }
   return collectionA;
 }
+
 function isExit(a, objectB) {
   for (var j = 0; j < objectB.value.length; j++)
     if (a.key == objectB.value[j])
