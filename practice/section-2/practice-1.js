@@ -2,13 +2,13 @@
 
 function countSameElements(collection) {
   var elementCounts = [{key: 'a', count: 0}];
-  var t = 0;
+  var subscript = 0;
   for (var i = 0; i < collection.length; i++) {
-    if (elementCounts[t].key == collection[i])
-      elementCounts[t].count += 1;
+    if (elementCounts[subscript].key == collection[i])
+      elementCounts[subscript].count += 1;
     else {
-      t = t + 1;
-      elementCounts[t] = {key: collection[i], count: 1};
+      subscript = subscript + 1;
+      elementCounts[subscript] = {key: collection[i], count: 1};
     }
   }
   return elementCounts;
