@@ -1,16 +1,16 @@
 'use strict';
 
 function collectSameElements(collectionA, collectionB) {
-  var a = [];
+  var sameElements = [];
   for (var i = 0; i < collectionA.length; i++) {
     if (isExitSameElement(collectionA[i], collectionB))
-      a.push(collectionA[i]);
+      sameElements.push(collectionA[i]);
   }
-  return a;
+  return sameElements;
 }
 
-function isExitSameElement(a, b) {
-  for (var j = 0; j < b.length; j++)
-    if (a == b[j])
+function isExitSameElement(element, collectionB) {
+  for (var j = 0; j < collectionB.length; j++)
+    if (element == collectionB[j])
       return 1;
 }
