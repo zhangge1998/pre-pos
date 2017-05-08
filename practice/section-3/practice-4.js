@@ -1,36 +1,36 @@
 'use strict';
 function createUpdatedCollection(collectionA, objectB) {
-  var result = getCountSameElements(collectionA);
+  var result = countSameElements(collectionA);
   for (var i = 0; i < result.length; i++) {
     if (isExit(result[i], objectB))
-      isLargeThanThree(result[i]);
+      isLarge(result[i]);
   }
   return result;
 }
 
-function getCountSameElements(collectionA) {
+function countSameElements(collectionA) {
   var elementCounts = [{key: 'a', count: 0}];
-  var t = 0;
+  var subscript = 0;
   for (var j = 0; j < collectionA.length; j++)
     if (collectionA[j].length == 1)
-      if (elementCounts[t].key == collectionA[j])
-        elementCounts[t].count += 1;
+      if (elementCounts[subscript].key == collectionA[j])
+        elementCounts[subscript].count += 1;
       else {
-        t = t + 1;
-        elementCounts[t] = {key: collectionA[j], count: 1};
+        subscript = subscript + 1;
+        elementCounts[subscript] = {key: collectionA[j], count: 1};
       }
     else
       elementCounts.push({key: collectionA[j].substring(0, 1), count: parseInt(collectionA[j].substring(2, 3))});
   return elementCounts;
 }
 
-function isExit(a, objectB) {
+function isExit(element, objectB) {
   for (var j = 0; j < objectB.value.length; j++)
-    if (a.key == objectB.value[j])
+    if (element.key == objectB.value[j])
       return 1;
 }
 
-function isLargeThanThree(a) {
-  if (a.count >= 3)
-    a.count -= parseInt(a.count / 3);
+function isLarge(element) {
+  if (element.count >= 3)
+    element.count -= parseInt(element.count / 3);
 }
