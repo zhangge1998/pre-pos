@@ -10,7 +10,7 @@ function countSameElements(collection) {
 
 function finditemStatus(item, result) {
   for (var j = 0; j < result.length; j++) {
-    if (item.charAt(0) === result[j].key) {
+    if (item === result[j].key) {
       result[j].count += 1;
       return;
     }
