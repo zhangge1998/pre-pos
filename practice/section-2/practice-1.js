@@ -1,15 +1,19 @@
 'use strict';
 
 function countSameElements(collection) {
-  var elementCounts = [{key: 'a', count: 0}];
-  var subscript = 0;
+  var result = [];
   for (var i = 0; i < collection.length; i++) {
-    if (elementCounts[subscript].key == collection[i])
-      elementCounts[subscript].count += 1;
-    else {
-      subscript = subscript + 1;
-      elementCounts[subscript] = {key: collection[i], count: 1};
+    finditemStatus(collection[i], result);
+  }
+  return result;
+}
+
+function finditemStatus(item, result) {
+  for (var j = 0; j < result.length; j++) {
+    if (item.charAt(0) === result[j].key) {
+      result[j].count += 1;
+      return;
     }
   }
-  return elementCounts;
+  result.push({key: item.charAt(0), count: 1});
 }
