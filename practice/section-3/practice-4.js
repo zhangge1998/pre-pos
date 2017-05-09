@@ -1,36 +1,40 @@
 'use strict';
 function createUpdatedCollection(collectionA, objectB) {
-  var result = countSameElements(collectionA);
-  for (var i = 0; i < result.length; i++) {
-    if (isExit(result[i], objectB))
-      isLarge(result[i]);
+  var arreyResult = countSameElements(collectionA);
+  for (var i = 0; i < arreyResult.length; i++) {
+    isExit(arreyResult[i], objectB);
+  }
+  return arreyResult;
+}
+
+function countSameElements(collectionA) {
+  var result = [];
+  for (var i = 0; i < collectionA.length; i++) {
+    finditemStatus(collectionA[i], result);
   }
   return result;
 }
 
-function countSameElements(collectionA) {
-  var elementCounts = [{key: 'a', count: 0}];
-  var subscript = 0;
-  for (var j = 0; j < collectionA.length; j++)
-    if (collectionA[j].length == 1)
-      if (elementCounts[subscript].key == collectionA[j])
-        elementCounts[subscript].count += 1;
-      else {
-        subscript = subscript + 1;
-        elementCounts[subscript] = {key: collectionA[j], count: 1};
-      }
-    else
-      elementCounts.push({key: collectionA[j].substring(0, 1), count: parseInt(collectionA[j].substring(2, 3))});
-  return elementCounts;
+function finditemStatus(item, result) {
+  for (var j = 0; j < result.length; j++) {
+    if (item.charAt(0) === result[j].key) {
+      result[j].count += elementCount(item);
+      return;
+    }
+  }
+  result.push({key: item.charAt(0), count: elementCount(item)});
+}
+
+function elementCount(item) {
+  if (item.length === 1)
+    return 1;
+  else
+    return parseInt(item.charAt(2));
 }
 
 function isExit(element, objectB) {
   for (var j = 0; j < objectB.value.length; j++)
-    if (element.key == objectB.value[j])
-      return 1;
+    if (element.key === objectB.value[j])
+      element.count -= parseInt(element.count / 3);
 }
 
-function isLarge(element) {
-  if (element.count >= 3)
-    element.count -= parseInt(element.count / 3);
-}

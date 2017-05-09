@@ -2,19 +2,14 @@
 
 function createUpdatedCollection(collectionA, objectB) {
   for (var i = 0; i < collectionA.length; i++) {
-    if (isExit(collectionA[i], objectB))
-      isLarge(collectionA[i]);
+    isExit(collectionA[i], objectB.value);
   }
   return collectionA;
 }
 
 function isExit(element, objectB) {
-  for (var j = 0; j < objectB.value.length; j++)
-    if (element.key == objectB.value[j])
-      return 1;
+  for (var j = 0; j < objectB.length; j++)
+    if (element.key === objectB[j])
+      element.count -= parseInt(element.count / 3);
 }
 
-function isLarge(element) {
-  if (element.count >= 3)
-    element.count -= parseInt(element.count / 3);
-}
